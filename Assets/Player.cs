@@ -58,11 +58,19 @@ public class Player : MonoBehaviour
         
         if (col.transform.tag == "mur")
         {
-            numberofcoin = 0;
-            speed = 25;
-            transform.position = new Vector3(0, 2, 0);
-            pos = 0;
-            Inf.ResetAll();
+            if (numberofcoin - 50 < 0)
+            {
+                numberofcoin = 0;
+                speed = 25;
+                transform.position = new Vector3(0, 2, 0);
+                pos = 0;
+                Inf.ResetAll();
+            }
+            else
+            {
+                numberofcoin = numberofcoin - 50;
+                speed = speed - 5;
+            }
         }
         if(col.transform.tag == "Ground")
         {
@@ -74,6 +82,7 @@ public class Player : MonoBehaviour
     {
         if (col.transform.tag == "Coin")
         {
+            if (speed < 40) speed = speed + 1;
             print("tag");
             numberofcoin++;
             
