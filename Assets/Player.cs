@@ -6,11 +6,10 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     InfiniteTerrain Inf;
-    public int speed = 4; // Vitesse déplacement
+    public float speed = 25; // Vitesse déplacement
     public int jumpPower = 500; // Puissance saut
     private bool canJump = true; // Peut on sauter ?
     Rigidbody body;
-
     short pos = 0;
     bool free = true;
     public int numberofcoin = 0;
@@ -45,22 +44,29 @@ public class Player : MonoBehaviour
             StartCoroutine(smoothright());
             pos++;
         }
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space))
+        if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space))&&canJump)
         {
             jump();
         }
-        transform.position += new Vector3(0, 0, 15f * Time.deltaTime);
+        transform.position += new Vector3(0, 0, speed * Time.deltaTime);
 
         print(pos);
     }
 
     void OnCollisionEnter(Collision col)
     {
+        
         if (col.transform.tag == "mur")
         {
+            numberofcoin = 0;
+            speed = 25;
             transform.position = new Vector3(0, 2, 0);
             pos = 0;
             Inf.ResetAll();
+        }
+        if(col.transform.tag == "Ground")
+        {
+            canJump = true;
         }
         
     }
@@ -70,6 +76,8 @@ public class Player : MonoBehaviour
         {
             print("tag");
             numberofcoin++;
+            
+            print(speed + "->" + numberofcoin);
             Inf.DeleteGold(col.gameObject);
         }
     }
@@ -109,6 +117,7 @@ public class Player : MonoBehaviour
     void jump()
     {
         body.AddForce(0, jumpPower, 0, ForceMode.Impulse);
+        canJump = false;
     }
 }
 

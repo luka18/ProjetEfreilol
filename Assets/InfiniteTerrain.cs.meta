@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: c78b59661b404c54a82133f7a7c1a678
-timeCreated: 1481462774
+timeCreated: 1481496813
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Coin: {fileID: 1933413421508056, guid: 9a5cc3467dc691c48b5004f4d85a7414, type: 2}
+  - chemin: {fileID: 125452, guid: 50f914d35ea1375429cffededeae273c, type: 2}
+  - player: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

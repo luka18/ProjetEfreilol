@@ -40,6 +40,8 @@ public class InfiniteTerrain : MonoBehaviour
         ListGold = new List<GameObject>();
         for(int i = 0; i < 4; i++)
         {
+
+            print("Spawning");
             GameObject tmp = (GameObject)Instantiate(chemin, new Vector3(0, 0, k), Quaternion.identity);
             ListGO.Add(tmp);
             k += 50;
