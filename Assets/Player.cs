@@ -59,11 +59,18 @@ public class Player : MonoBehaviour
         
         if (col.transform.tag == "mur")
         {
+            //No delete
+            StopAllCoroutines(); 
+            free = true;
+            transform.position = new Vector3(0, 2, 0);
+            // No Delete
+
             if (candie == true)
             {
+                
                 numberofcoin = 0;
                 speed = 25;
-                transform.position = new Vector3(0, 2, 0);
+                
                 pos = 0;
                 candie = true;
                 Inf.ResetAll();

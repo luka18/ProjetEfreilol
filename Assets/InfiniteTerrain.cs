@@ -18,10 +18,13 @@ public class InfiniteTerrain : MonoBehaviour
     long k = 0;
     long kcoin = 0;
     long check = 50;
+    long check2 = 50;
     float TimerObstable = 0;
     int lastrandomOB = 0;
     int lastrandom = 0;
     public int coinsstack = 8;
+
+    float ObsDelayInMeters = 10;
 
     int lastcoin = 0;
     float timercoin = 0;
@@ -48,6 +51,7 @@ public class InfiniteTerrain : MonoBehaviour
         }
         k -= 50;
         check = 50;
+        check2 = 0;
         kcoin =0;
         
         TimerObstable = Time.time;
@@ -67,10 +71,9 @@ public class InfiniteTerrain : MonoBehaviour
             Destroy(tmp2);
             ListGO.RemoveAt(0);
         }
-        if (Time.time > TimerObstable)
+        if (player.position.z>check2)
         {
-            float ran = Random.Range(0.4f, 1.5f);
-            TimerObstable += ran;
+            check2 += 10;
             SpawnObstabcle();
         }
         if (player.position.z> kcoin)
@@ -146,6 +149,7 @@ public class InfiniteTerrain : MonoBehaviour
         }
         k -= 50;
         check = 50;
+        check2 = 0;
         kcoin = 0;
         coinsstack = 8;
         TimerObstable = Time.time;
