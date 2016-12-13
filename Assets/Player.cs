@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     Rigidbody body;
     short pos = 0;
     bool free = true;
+    bool candie = true;
     public int numberofcoin = 0;
     // Use this for initialization
     void Start()    
@@ -58,18 +59,21 @@ public class Player : MonoBehaviour
         
         if (col.transform.tag == "mur")
         {
-            if (numberofcoin - 50 < 0)
+            if (candie == true)
             {
                 numberofcoin = 0;
                 speed = 25;
                 transform.position = new Vector3(0, 2, 0);
                 pos = 0;
+                candie = true;
                 Inf.ResetAll();
             }
             else
             {
+                
                 numberofcoin = numberofcoin - 50;
-                speed = speed - 5;
+                speed = speed - 15;
+                candie = true;
             }
         }
         if(col.transform.tag == "Ground")
@@ -82,9 +86,11 @@ public class Player : MonoBehaviour
     {
         if (col.transform.tag == "Coin")
         {
-            if (speed < 40) speed = speed + 1;
+            if (speed < 45) speed = speed + 1;
             print("tag");
-            numberofcoin++;
+
+            if (numberofcoin<50)numberofcoin++;
+            if (numberofcoin == 50)  candie = false;
             
             print(speed + "->" + numberofcoin);
             Inf.DeleteGold(col.gameObject);
