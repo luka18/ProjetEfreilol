@@ -1156,7 +1156,7 @@ ModelImporter:
       name: RunCycle
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 26
+      lastFrame: 22
       wrapMode: 2
       orientationOffsetY: 0
       level: 0

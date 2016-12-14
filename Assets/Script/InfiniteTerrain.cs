@@ -24,7 +24,7 @@ public class InfiniteTerrain : MonoBehaviour
     int lastrandom = 0;
     public int coinsstack = 8;
 
-    float ObsDelayInMeters = 10;
+    float ObsDelayInMeters = 15;
 
     int lastcoin = 0;
     float timercoin = 0;
